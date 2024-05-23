@@ -50,3 +50,7 @@
      3. Hay que responder en el chat para que se habilite el enviado de mensajes
 ## 9. Enviar un mensaje de tipo texto con diferentes formatos
   1. Se cambia el formato del texto como se cambia al escribir en whatsApp
+## 10. Enviar un mensaje con vista previa de una Url
+  1. Colocar el previewUrl en true para que se vea la preview de las urls
+  2. Ingresar una url en el body
+  3. Enviar mensaje
