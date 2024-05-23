@@ -48,3 +48,5 @@
      1. en To va el número de teléfono 📱
      2. En body va el mensaje que queremos enviar 
      3. Hay que responder en el chat para que se habilite el enviado de mensajes
+## 9. Enviar un mensaje de tipo texto con diferentes formatos
+  1. Se cambia el formato del texto como se cambia al escribir en whatsApp
