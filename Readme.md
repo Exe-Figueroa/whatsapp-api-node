@@ -42,3 +42,9 @@
         - whatsapp_business_messaging
      3. Generar token
   7. Reemplazar el token por el de postman
+## 8. Enviar un mensaje de tipo texto
+  1. Buscar el [whatsAppCloud API postman](https://www.postman.com/meta/workspace/whatsapp-business-platform/collection/13382743-84d01ff8-4253-4720-b454-af661f36acc2): En la config de postman encontramos las configuraciones que ofrece meta para realizar solicitudes
+  2. Copiar la solicitud de muestra y reemplazar los valores
+     1. en To va el número de teléfono 📱
+     2. En body va el mensaje que queremos enviar 
+     3. Hay que responder en el chat para que se habilite el enviado de mensajes
