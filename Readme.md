@@ -64,3 +64,6 @@
   7. Lo mismo para los documentos solo que a estos además del link se les agrega la propiedad caption que es el nombre del documento
   8. Para los videos lo mismo que el document
   9. Para el sticker es lo mismo solo que sin el caption
+## 12. Enviar ubicación
+  1. Se crea una solicitud de tipo location
+  2. En la estructura del Location se asignan la altitud, la longitud, el nombre y la dirección
