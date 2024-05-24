@@ -54,3 +54,13 @@
   1. Colocar el previewUrl en true para que se vea la preview de las urls
   2. Ingresar una url en el body
   3. Enviar mensaje
+## 11. Enviar imagen, audio, documento y video
+  1. Replicar la consulta anterior y asignarle el campo type
+  2. En el campo type especificar que va a ser una imagen
+  3. Y reemplazar text por image
+  4. Eliminar los campos que tenía el text
+  5. Colocar un campo link y colocar la url de la imagen
+  6. Para enviar audios es lo mismo solo que se le cambia el tipo y la clave a audio
+  7. Lo mismo para los documentos solo que a estos además del link se les agrega la propiedad caption que es el nombre del documento
+  8. Para los videos lo mismo que el document
+  9. Para el sticker es lo mismo solo que sin el caption
