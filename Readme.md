@@ -67,3 +67,9 @@
 ## 12. Enviar ubicación
   1. Se crea una solicitud de tipo location
   2. En la estructura del Location se asignan la altitud, la longitud, el nombre y la dirección
+## 13. Enviar botones
+  1. Ir a la documentación y hacer un send reply button (copiar la estructura)+
+  2. Cambiar el button text por el nombre de la pregunta
+  3. Ingresar los ids de los botones y su respuesta
+## 14. Enviar botones con imagen, video y documento
+  1 . Es básicamente lo mismo solo que se le agrega un header con los campos nuevos a implementar
