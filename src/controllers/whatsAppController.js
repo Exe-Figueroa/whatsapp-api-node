@@ -22,7 +22,7 @@ export const RecivedMessage = (req, res)=>{
     const entry = req.body.entry[0]
     const changes = entry.changes[0]
     const {value: {messages} } = changes;
-    console.log({messages});
+    console.log(messages);
     // myConsole.log(messages)
     res.send('EVENT_RECIBED')
   } catch (error) {
