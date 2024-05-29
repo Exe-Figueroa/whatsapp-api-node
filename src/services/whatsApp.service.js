@@ -14,7 +14,7 @@ export const sendMessageWhatsApp =  (textResponse, number)=>{
   };
   const data = JSON.stringify(body);
   const options = {
-    host: "graph.facebook.com",
+    hostname: "graph.facebook.com",
     path: "/v19.0/347629235091879/messages",
     method: "POST",
     headers: {
