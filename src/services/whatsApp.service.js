@@ -1,46 +1,4 @@
-// // import https from "node:https"
-
-// export const sendMessageWhatsApp = async  (textResponse, number)=>{
-//   const cleanedNumber = number.slice(0, 2) + number.slice(3)
-//   console.log(cleanedNumber);
-//   const body = {
-//     "messaging_product": "whatsapp",
-//     "to": number,
-//     "text": {
-//       "body": textResponse
-//     },
-//     "type": "text"
-//   };
-//   console.log({body});
-//   const data = JSON.stringify(body);
-//   // const options = {
-//   //   host: "graph.facebook.com",
-//   //   path: "/v19.0/347629235091879/messages",
-//   //   method: "POST",
-//   //   headers: {
-//   //     "Content-Type": "application/json",
-//   //     Authorization: "Bearer EAAGprZCTZAHtABO6A3GQa1rbHqe75B1ILlDtPFDZAminyA23KKrbwYZA8IDR3lTOS8KVkrMJmr6EI19pzIbYVZB9iStswT0SR3dqrSX9meaDq9ZAIAupynaINBK4pDYN3ruoWzTHgYPmtXCHQK6aZCENmnzxWaOIy4Eil9YlrwoyeFVXnYQV1B4btDMzwNqTOh3SuZBHvHtIrdQXNZCZAJvrAYP90AZCptqsihANkeyUdwZD",
-//   //   },
-//   // };
-
-//   fetch('https://graph.facebook.com/v19.0/347629235091879/messages', {
-//     method: "POST",
-//     headers: {
-//       "Content-Type": "application/json",
-//       "Authorization": "Bearer EAAGprZCTZAHtABO6A3GQa1rbHqe75B1ILlDtPFDZAminyA23KKrbwYZA8IDR3lTOS8KVkrMJmr6EI19pzIbYVZB9iStswT0SR3dqrSX9meaDq9ZAIAupynaINBK4pDYN3ruoWzTHgYPmtXCHQK6aZCENmnzxWaOIy4Eil9YlrwoyeFVXnYQV1B4btDMzwNqTOh3SuZBHvHtIrdQXNZCZAJvrAYP90AZCptqsihANkeyUdwZD",
-//     },
-//     body: data
-//   })
-//   .then(res => {console.log(res); return res.json()})
-//   .then(data=>console.log(data))
-//   .catch(e=>console.error(e))
-
-// }
-
-
 import axios from "axios";
-
-
 
 export class WtsppService {
   VerifyToken = (req, res) => {
@@ -64,6 +22,9 @@ export class WtsppService {
   ReceivedMessage = async (req, res) => {
     try {
       const entry = (req.body["entry"])[0];
+      console.log('--------'.repeat(10));
+      console.log(req.body);
+      console.log('--------'.repeat(10));
       const changes = (entry["changes"])[0];
       const value = changes["value"];
       const messageObject = value["messages"]; //con esto encontramos el mesaje
@@ -76,14 +37,15 @@ export class WtsppService {
           console.log(number);
           const parsedNumber = number.slice(0, 2) + number.slice(3)
           console.log({ parsedNumber });
-          this.SendMessageWtspp(JSON.stringify({
+          const data = {
             "messaging_product": "whatsapp",
             "to": parsedNumber,
             "text": {
               "body": text
             },
             "type": "text"
-          }))
+          }
+          this.SendMessageWtspp(data);
         }
 
       }
@@ -124,7 +86,7 @@ export class WtsppService {
       await axios.post(url, data, {
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer EAAGprZCTZAHtABO6A3GQa1rbHqe75B1ILlDtPFDZAminyA23KKrbwYZA8IDR3lTOS8KVkrMJmr6EI19pzIbYVZB9iStswT0SR3dqrSX9meaDq9ZAIAupynaINBK4pDYN3ruoWzTHgYPmtXCHQK6aZCENmnzxWaOIy4Eil9YlrwoyeFVXnYQV1B4btDMzwNqTOh3SuZBHvHtIrdQXNZCZAJvrAYP90AZCptqsihANkeyUdwZD`
+          'Authorization': `Bearer EAAGprZCTZAHtABOw5NJ4ZC7RUktZBIJGM8dxgnZARKoCDob87CP9K8k0e09ky3ueVrVfOMzwEQ2PUW7I4wGhVf2SGbRXvdhekJLQOMOZCpM0G0vGxL8EpDwZBE6JdH6pWssT647WZBAulfhclzVyebk7KSUXzLmdS2EkZBgTpr0wr3PXl6tujIMAtlvtnAXT0A2Uk`
         }
       });
 
