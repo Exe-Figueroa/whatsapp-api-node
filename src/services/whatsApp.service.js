@@ -25,6 +25,7 @@ export const sendMessageWhatsApp =  (textResponse, number)=>{
   }
   const req = https.request(options, (res)=>{
     res.on("data", resData =>{
+      console.log('resData=> ', resData);
       process.stdout.write(resData)
     })
   });
