@@ -23,8 +23,9 @@ export class WtsppService {
     try {
       const entry = (req.body["entry"])[0];
       console.log('--------'.repeat(10));
-      console.log(req.body);
+      console.log(req.body.entry[0].changes[0].value.messages);
       console.log('--------'.repeat(10));
+      
       const changes = (entry["changes"])[0];
       const value = changes["value"];
       const messageObject = value["messages"]; //con esto encontramos el mesaje
