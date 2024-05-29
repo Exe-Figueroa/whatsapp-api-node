@@ -1,7 +1,7 @@
 // import fs from 'node:fs';
 // const myConsole = new console.Console(fs.createWriteStream('./logs.txt'))
 
-import { sendMessageWhatsApp } from "../services/whatsApp.service";
+import { sendMessageWhatsApp } from "../services/whatsApp.service.js";
 
 export const VerifyToken = (req, res) => {
   try {
