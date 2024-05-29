@@ -25,7 +25,7 @@ export class WtsppService {
       // console.log('--------'.repeat(10));
       // console.log(req.body.entry[0].changes[0].value.messages);
       // console.log('--------'.repeat(10));
-      
+
       // const changes = (entry["changes"])[0];
       // const value = changes["value"];
       // const messageObject = value["messages"]; //con esto encontramos el mesaje
@@ -86,13 +86,21 @@ export class WtsppService {
     try {
       const url = 'https://graph.facebook.com/v19.0/347629235091879/messages';
 
-      const axiosRes = await axios.post(url, data, {
+      // const axiosRes = await axios.post(url, data, {
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      //     'Authorization': `Bearer EAAGprZCTZAHtABOw5NJ4ZC7RUktZBIJGM8dxgnZARKoCDob87CP9K8k0e09ky3ueVrVfOMzwEQ2PUW7I4wGhVf2SGbRXvdhekJLQOMOZCpM0G0vGxL8EpDwZBE6JdH6pWssT647WZBAulfhclzVyebk7KSUXzLmdS2EkZBgTpr0wr3PXl6tujIMAtlvtnAXT0A2Uk`
+      //   }
+      // });
+      const fetchData = await fetch(url, {
+        method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer EAAGprZCTZAHtABOw5NJ4ZC7RUktZBIJGM8dxgnZARKoCDob87CP9K8k0e09ky3ueVrVfOMzwEQ2PUW7I4wGhVf2SGbRXvdhekJLQOMOZCpM0G0vGxL8EpDwZBE6JdH6pWssT647WZBAulfhclzVyebk7KSUXzLmdS2EkZBgTpr0wr3PXl6tujIMAtlvtnAXT0A2Uk`
-        }
-      });
-      console.log({axiosRes});
+        },
+        body: JSON.stringify(data)
+      })
+      console.log({ fetchData });
       console.log('Mensaje enviado:', data);
     } catch (error) {
       console.log({ error });
