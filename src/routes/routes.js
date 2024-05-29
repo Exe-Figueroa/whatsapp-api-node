@@ -1,8 +1,9 @@
 import express from "express";
-import { RecivedMessage, VerifyToken } from "../controllers/whatsAppController.js";
-
+// import { RecivedMessage, VerifyToken } from "../controllers/whatsAppController.js";
+import { WtsppService } from "../services/whatsApp.service";
+const wServ = new WtsppService()
 export const WhatsAppRouter = express.Router();
 
 WhatsAppRouter
-  .get('/', VerifyToken)
-  .post('/', RecivedMessage)
+  .get('/', wServ.VerifyToken)
+  .post('/', wServ.ReceivedMessage)
