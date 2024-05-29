@@ -28,7 +28,7 @@ export const RecivedMessage = (req, res) => {
     console.log('Entry => ', entry);
     console.log('changes => ', changes);
     console.log('messages => ', messages);
-    if (!messages) {
+    if (messages) {
       const message = messages[0];
       const text = GetUserText(message);
       console.log({text});
