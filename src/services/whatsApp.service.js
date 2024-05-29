@@ -22,8 +22,8 @@ export const sendMessageWhatsApp = async  (textResponse, number)=>{
   //     Authorization: "Bearer EAAGprZCTZAHtABO6A3GQa1rbHqe75B1ILlDtPFDZAminyA23KKrbwYZA8IDR3lTOS8KVkrMJmr6EI19pzIbYVZB9iStswT0SR3dqrSX9meaDq9ZAIAupynaINBK4pDYN3ruoWzTHgYPmtXCHQK6aZCENmnzxWaOIy4Eil9YlrwoyeFVXnYQV1B4btDMzwNqTOh3SuZBHvHtIrdQXNZCZAJvrAYP90AZCptqsihANkeyUdwZD",
   //   },
   // };
-
-  const dataRes = await fetch('https://graph.facebook.com/v19.0/347629235091879/messages', {
+  
+  fetch('https://graph.facebook.com/v19.0/347629235091879/messages', {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -31,7 +31,8 @@ export const sendMessageWhatsApp = async  (textResponse, number)=>{
     },
     body: data
   })
-  const respuesta = await dataRes.json()
-  console.log("dataRes => ", dataRes);
-  console.log("respuesta => ", respuesta);
+  .then(res => {console.log(res); return res.json()})
+  .then(data=>console.log(data))
+  .catch(e=>console.error(e))
+
 }
