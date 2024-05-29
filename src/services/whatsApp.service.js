@@ -21,14 +21,16 @@ export class WtsppService {
 
   ReceivedMessage = async (req, res) => {
     try {
-      const entry = (req.body["entry"])[0];
-      console.log('--------'.repeat(10));
-      console.log(req.body.entry[0].changes[0].value.messages);
-      console.log('--------'.repeat(10));
+      // const entry = (req.body["entry"])[0];
+      // console.log('--------'.repeat(10));
+      // console.log(req.body.entry[0].changes[0].value.messages);
+      // console.log('--------'.repeat(10));
       
-      const changes = (entry["changes"])[0];
-      const value = changes["value"];
-      const messageObject = value["messages"]; //con esto encontramos el mesaje
+      // const changes = (entry["changes"])[0];
+      // const value = changes["value"];
+      // const messageObject = value["messages"]; //con esto encontramos el mesaje
+      const messageObject = req.body.entry[0].changes[0].value.messages
+      console.log(messageObject);
       if (typeof messageObject != "undefined") {
         const messages = messageObject[0];
         const number = messages["from"]
