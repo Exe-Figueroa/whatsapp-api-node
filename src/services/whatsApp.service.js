@@ -42,7 +42,7 @@ import axios from "axios";
 
 
 
-export class WtsppService extends PromptServices {
+export class WtsppService {
   VerifyToken = (req, res) => {
     try {
       const accessToken = "KJALSDHBAJKL1769623EBKJAS971"; //!generar un token seguro
@@ -76,7 +76,14 @@ export class WtsppService extends PromptServices {
           console.log(number);
           const parsedNumber = number.slice(0, 2) + number.slice(3)
           console.log({ parsedNumber });
-          await this.Process(text, parsedNumber); //! a la hora de adquirir el numero en whts me lo trae con un 9 un y en la web no lo identifica apesar de ser el mismo investigar 
+          this.SendMessageWtspp(JSON.stringify({
+            "messaging_product": "whatsapp",
+            "to": parsedNumber,
+            "text": {
+              "body": text
+            },
+            "type": "text"
+          }))
         }
 
       }
