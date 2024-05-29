@@ -1,6 +1,8 @@
 // import fs from 'node:fs';
 // const myConsole = new console.Console(fs.createWriteStream('./logs.txt'))
 
+import { sendMessageWhatsApp } from "../services/whatsApp.service";
+
 export const VerifyToken = (req, res) => {
   try {
     let accessToken = "KJALSDHBAJKL1769623EBKJAS971";
@@ -29,7 +31,9 @@ export const RecivedMessage = (req, res) => {
     if (messages) {
       const message = messages[0];
       const text = GetUserText(message);
-      console.log({text});
+      const number = message.from;
+
+      sendMessageWhatsApp(`El ususario dijo: ${text}`, number)
     }
     // myConsole.log(messages)
     res.send("EVENT_RECIBED");
