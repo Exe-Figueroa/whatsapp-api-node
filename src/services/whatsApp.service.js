@@ -6,7 +6,7 @@ export const sendMessageWhatsApp =  (textResponse, number)=>{
   console.log(cleanedNumber);
   const body = {
     messaging_product: "whatsapp",
-    to: number,
+    to: '542612636565',
     text: {
       body: textResponse
     },
@@ -14,7 +14,7 @@ export const sendMessageWhatsApp =  (textResponse, number)=>{
   };
   const data = JSON.stringify(body);
   const options = {
-    hostname: "graph.facebook.com",
+    host: "graph.facebook.com",
     path: "/v19.0/347629235091879/messages",
     method: "POST",
     headers: {
