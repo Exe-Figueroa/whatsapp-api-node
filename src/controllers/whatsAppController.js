@@ -18,6 +18,7 @@ export const VerifyToken = (req, res) => {
 
 
 export const RecivedMessage = (req, res) => {
+  console.log('Recibimos un msj');
   try {
     const entry = req.body.entry[0];
     const changes = entry.changes[0];
