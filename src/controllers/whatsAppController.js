@@ -9,10 +9,10 @@ export const VerifyToken = (req, res) => {
     if (challenge != null && accessToken != null && accessToken === token) {
       res.send(challenge);
     } else {
-      res.send(400).send(error);
+      res.sendStatus(400).send(error);
     }
   } catch (error) {
-    res.send(400).send(error);
+    res.sendStatus(400).send(error);
   }
 };
 
