@@ -2,11 +2,11 @@ import https from "node:https"
 
 export const sendMessageWhatsApp =  (textResponse, number)=>{
   console.log({textResponse, number});
-  const cleanedNumber = '54' + number.split('549')[1]
+  const cleanedNumber = number.slice(0, 2) + number.slice(3)
   console.log(cleanedNumber);
   const body = {
     messaging_product: "whatsapp",
-    to: '542612636565',
+    to: number,
     text: {
       body: textResponse
     },
