@@ -19,7 +19,7 @@ export const sendMessageWhatsApp =  (textResponse, number)=>{
     method: "POST",
     body: data,
     headers: {
-      "Content-Type": "aplication/json",
+      "Content-Type": "application/json",
       Authorization: "Bearer EAAGprZCTZAHtABO6A3GQa1rbHqe75B1ILlDtPFDZAminyA23KKrbwYZA8IDR3lTOS8KVkrMJmr6EI19pzIbYVZB9iStswT0SR3dqrSX9meaDq9ZAIAupynaINBK4pDYN3ruoWzTHgYPmtXCHQK6aZCENmnzxWaOIy4Eil9YlrwoyeFVXnYQV1B4btDMzwNqTOh3SuZBHvHtIrdQXNZCZAJvrAYP90AZCptqsihANkeyUdwZD" 
     }
   }
