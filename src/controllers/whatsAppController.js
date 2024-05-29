@@ -32,7 +32,7 @@ export const RecivedMessage = (req, res) => {
       const message = messages[0];
       const text = GetUserText(message);
       const number = message.from;
-
+      console.log({text, number});
       sendMessageWhatsApp(`El ususario dijo: ${text}`, number)
     }
     // myConsole.log(messages)
