@@ -37,11 +37,9 @@
 
 // }
 
-import { MessageText } from "../shared/whatsApp.modes.js";
-import { config } from "../config/index.js";
+
 import axios from "axios";
-import { PromptServices } from "./prompt.service.js";
-import { RedisServices } from "./redis.service.js";
+
 
 
 export class WtsppService extends PromptServices {
@@ -115,7 +113,6 @@ export class WtsppService extends PromptServices {
     console.log({ data });
     try {
       const url = 'https://graph.facebook.com/v19.0/347629235091879/messages';
-      const token = config.tokenWtspp; //! conseguir token permanente
 
       await axios.post(url, data, {
         headers: {
@@ -131,45 +128,5 @@ export class WtsppService extends PromptServices {
     }
   }
 
-  Process = async (textUser, number) => {
-    textUser = textUser.toLowerCase();
-    let models = [];
-
-    // #region con gemini
-    try { //! refactorisar para poder utilizar el sistema de identificacion de historial.
-      let data = await this.getAll();
-      const redis = new RedisServices()
-      const redisItemToken = await redis.getItem(number)
-
-      //! pra crear los historiales de los chat en redis se van a hacer con el numero de celular
-      const dataPrev = data.map(item => {
-        const { _id, ...Data } = item;
-        return Data._doc.Data;
-      });
-      const dataString = JSON.stringify(dataPrev);
-      const response = await this.geminiGeneration(textUser, dataString, redisItemToken);
-      if (response !== null) {
-        const model = MessageText(response, number);
-        models.push(model)
-
-      } else {
-        const model = wtsppModels.MessageText("Lo siento algo salio mal intesta mas tarde", number);
-        models.push(model)
-      }
-      if (!redisItemToken) {
-        await redis.createItem(`  Message: ${textUser}, Response: ${response}`, number, 300)
-      } else {
-        console.log({ "UpdateItem": redisItemToken });
-        await redis.updateItem(`  Message: ${textUser}, Response: ${response}`, number)
-      }
-      models.forEach(async (model) => {
-        this.SendMessageWtspp(model);
-        console.log({ model });
-      })
-
-    } catch (error) {
-      console.error(error);
-    }
-  }
 
 }
