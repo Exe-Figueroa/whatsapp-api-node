@@ -23,17 +23,27 @@ export const sendMessageWhatsApp =  (textResponse, number)=>{
       Authorization: "Bearer EAAGprZCTZAHtABO6A3GQa1rbHqe75B1ILlDtPFDZAminyA23KKrbwYZA8IDR3lTOS8KVkrMJmr6EI19pzIbYVZB9iStswT0SR3dqrSX9meaDq9ZAIAupynaINBK4pDYN3ruoWzTHgYPmtXCHQK6aZCENmnzxWaOIy4Eil9YlrwoyeFVXnYQV1B4btDMzwNqTOh3SuZBHvHtIrdQXNZCZAJvrAYP90AZCptqsihANkeyUdwZD" 
     }
   }
-  const req = https.request(options, (res)=>{
-    console.log(res);
-    res.on("data", resData =>{
-      console.log('resData=> ', resData);
-      process.stdout.write(resData)
-    })
+  const req = https.request(options, (res) => {
+    let responseData = '';
+
+    res.on('data', (chunk) => {
+      responseData += chunk;
+    });
+
+    res.on('end', () => {
+      console.log('Response from WhatsApp API: ', responseData);
+      const responseJson = JSON.parse(responseData);
+      if (res.statusCode === 200) {
+        console.log('Message sent successfully:', responseJson);
+      } else {
+        console.error('Error sending message:', responseJson);
+      }
+    });
   });
 
-  req.on('error', (e)=>{
+  req.on('error', (e) => {
     console.error('Error en el request => ', e);
-  })
+  });
   req.write(data);
   req.end();
 }
